@@ -1,0 +1,257 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Ran tool
+# **HELPING HANDS APP DEVELOPMENT RULES**
+## **Comprehensive Implementation Guidelines**
+
+---
+
+## **🏗️ DEVELOPMENT WORKFLOW RULES**
+
+### **Rule 1: Two-Phase Development Approach**
+- **Phase 1**: Build ALL pages with UI/UX design ONLY (no backend logic)
+- **Phase 2**: Add backend logic, authentication, and database connections to each page
+- **Never mix**: UI development and logic implementation in the same session
+- **Complete Phase 1 100%** before moving to Phase 2
+
+### **Rule 2: Numbered Page Development Order**
+- **STRICT ORDER**: Follow the exact page numbering provided
+- **No skipping**: Complete each page before moving to the next
+- **Sequential development**: Page 1 → Page 2 → Page 3... etc.
+- **Document completion**: Mark each page as completed in task manager
+
+### **Rule 3: Three-Component Reference System**
+Before developing ANY page, I MUST:
+1. **Read the page description** thoroughly
+2. **Analyze the page screenshot** for visual design cues
+3. **Study the Figma Flutter Dart code** for implementation details
+4. **Cross-reference** all three components for consistency
+5. **Never start development** without reviewing all three components
+
+---
+
+## **🔧 COMMAND EXECUTION RULES**
+
+### **Rule 4: Error-Free Command Execution**
+- **Monitor EVERY command output** immediately after execution
+- **Fix errors INSTANTLY** without asking for user confirmation
+- **Re-run commands** until they execute successfully
+- **Never continue** with subsequent commands if previous ones failed
+- **Test immediately** after each implementation
+
+### **Rule 5: Flutter Development Commands**
+- **Always run `flutter doctor`** before starting development
+- **Use `flutter run`** after each page completion
+- **Execute `flutter clean`** if build errors occur
+- **Run `flutter pub get`** after adding new dependencies
+- **Test on both Android and iOS** when possible
+
+### **Rule 6: Dependency Management**
+- **Add dependencies** to `pubspec.yaml` before using them
+- **Version lock** all packages for stability
+- **Test compatibility** after adding new packages
+- **Document all dependencies** with their purpose
+
+---
+
+## **📋 TASK MANAGEMENT & DOCUMENTATION RULES**
+
+### **Rule 7: Detailed Task Manager Document**
+Create and maintain `HELPING_HANDS_TASK_MANAGER.md` with:
+```markdown
+## TASK STATUS TRACKER
+
+### COMPLETED TASKS ✅
+- [Page X] - [Page Name] - [Completion Date] - [Notes]
+
+### PENDING TASKS ⏳
+- [Page X] - [Page Name] - [Estimated Time] - [Dependencies]
+
+### SKIPPED TASKS ⏭️
+- [Page X] - [Page Name] - [Reason for Skipping] - [Future Action Required]
+
+### ISSUES & CHANGES 🐛
+- [Issue Description] - [Date] - [Resolution] - [Impact]
+
+### IMPLEMENTATION NOTES 📝
+- [Technical decisions made]
+- [Code patterns established]
+- [Architecture choices]
+```
+
+### **Rule 8: Task Status Updates**
+- **Update task status** after each page completion
+- **Provide detailed reasons** for skipped or pending tasks
+- **Document any issues** encountered and their solutions
+- **Track time estimates** vs actual development time
+- **Note any changes** made to original specifications
+
+---
+
+## **🎨 UI/UX DESIGN RULES**
+
+### **Rule 9: Visual Design Standards**
+- **All buttons MUST have shadows** using Flutter's `BoxShadow`
+- **Smooth animations** for all transitions using `AnimationController`
+- **Consistent color scheme** as per Helping Hands branding
+- **Rounded corners** on buttons and cards (BorderRadius.circular())
+- **Proper spacing** using Flutter's spacing widgets
+
+### **Rule 10: Animation Implementation**
+```dart
+// Standard button shadow
+BoxDecoration(
+  boxShadow: [
+    BoxShadow(
+      color: Colors.grey.withOpacity(0.3),
+      spreadRadius: 2,
+      blurRadius: 5,
+      offset: Offset(0, 3),
+    ),
+  ],
+)
+
+// Standard page transitions
+PageRouteBuilder(
+  transitionDuration: Duration(milliseconds: 300),
+  pageBuilder: (context, animation, _) => NextPage(),
+  transitionsBuilder: (context, animation, _, child) {
+    return SlideTransition(
+      position: animation.drive(
+        Tween(begin: Offset(1.0, 0.0), end: Offset.zero),
+      ),
+      child: child,
+    );
+  },
+)
+```
+
+### **Rule 11: Responsive Design**
+- **Screen size adaptation** using MediaQuery
+- **Flexible layouts** with Flexible and Expanded widgets
+- **Safe area handling** for notched devices
+- **Text scaling** support for accessibility
+
+---
+
+## **🗄️ DATABASE & AUTHENTICATION RULES**
+
+### **Rule 12: Supabase + Firebase Setup**
+- **Supabase**: Primary database and real-time features
+- **Firebase**: Authentication and push notifications
+- **No RLS initially**: Create tables without Row Level Security
+- **Document schema**: Maintain database schema documentation
+
+### **Rule 13: Database Table Creation**
+Create tables for:
+```sql
+-- Users table (3 types: helpees, helpers, admins)
+CREATE TABLE users (
+  id UUID PRIMARY KEY,
+  role VARCHAR CHECK (role IN ('helpee', 'helper', 'admin')),
+  email VARCHAR UNIQUE,
+  -- ... other fields
+);
+
+-- Jobs table
+CREATE TABLE jobs (
+  id UUID PRIMARY KEY,
+  helpee_id UUID REFERENCES users(id),
+  helper_id UUID REFERENCES users(id),
+  -- ... other fields
+);
+```
+
+### **Rule 14: User Type Management**
+- **Three user types**: Helpees, Helpers, Admins
+- **Role-based navigation**: Different home pages per user type
+- **Conditional rendering**: Show/hide features based on user role
+- **Authentication flow**: Separate login/register flows per user type
+
+---
+
+## **📱 FLUTTER PROJECT STRUCTURE RULES**
+
+### **Rule 15: Project Organization**
+```
+lib/
+├── main.dart
+├── pages/
+│   ├── helpee/
+│   ├── helper/
+│   └── admin/
+├── widgets/
+│   ├── common/
+│   └── custom/
+├── services/
+│   ├── supabase_service.dart
+│   └── firebase_service.dart
+├── models/
+├── utils/
+└── constants/
+```
+
+### **Rule 16: Code Quality Standards**
+- **Consistent naming**: Use camelCase for variables, PascalCase for classes
+- **Comment complex logic**: Especially business rule implementations
+- **Error handling**: Wrap API calls in try-catch blocks
+- **State management**: Use Provider or Riverpod consistently
+- **Code formatting**: Run `dart format` before commits
+
+---
+
+## **🔍 REFERENCE & VALIDATION RULES**
+
+### **Rule 17: Documentation Cross-Reference**
+- **Always refer** to `Helping Hands Overview Doc.txt` for technical specs
+- **Validate against requirements** before marking tasks complete
+- **Check user flow consistency** across all pages
+- **Ensure feature completeness** as per specifications
+
+### **Rule 18: Testing & Validation**
+- **Test each page** immediately after creation
+- **Verify navigation flows** between related pages
+- **Check responsiveness** on different screen sizes
+- **Validate user experience** matches design specifications
+
+---
+
+## **🚀 DEPLOYMENT PREPARATION RULES**
+
+### **Rule 19: Build Readiness**
+- **Clean builds**: Ensure `flutter build apk` and `flutter build ios` work
+- **Asset optimization**: Compress images and optimize resources
+- **Performance testing**: Check app performance on lower-end devices
+- **Error tracking**: Implement proper error logging
+
+### **Rule 20: Version Control & Backup**
+- **Regular commits** after each completed page
+- **Meaningful commit messages**: "Implement Page X: [Page Name]"
+- **Backup project files** regularly
+- **Document major changes** in commit messages
+
+---
+
+## **⚡ IMMEDIATE ACTION RULES**
+
+### **Rule 21: No Confirmation Required**
+- **Execute immediately** when user provides instructions
+- **Don't ask for permission** to fix errors or run commands
+- **Auto-fix compilation errors** without user intervention
+- **Continue development** until task is 100% complete
+
+### **Rule 22: Communication Standards**
+- **Report progress clearly**: "Page X completed, moving to Page Y"
+- **Show working results**: Screenshots or descriptions of completed features
+- **Flag issues immediately**: Report any blockers or decisions needed
+- **Provide ETA updates**: Keep user informed of development timeline
+
+---
+
+**💡 REMEMBER: These rules ensure smooth, error-free development of the Helping Hands app with proper documentation, task tracking, and high-quality implementation standards.**
+
+
+Would you like me to create the initial task manager document and Flutter project structure following these rules?

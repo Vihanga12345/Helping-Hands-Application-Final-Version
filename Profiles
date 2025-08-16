@@ -1,0 +1,116 @@
+I want you to Redesign and update the designs of the Profile pages and the User view of the user pages like follows.
+The infomation should be displayed in the following order and structure
+
+If there are More feilds to be added (Parameters that are currently not there in the app and in the Structure i provided) Fecth the correct info from the DB side and Add those feilds.
+If there are Feilds to be deleted (Parameters that are currently there in the app and not in the Structure i provided) delete them
+
+
+Make sure All the 6 pages follows the same text size, styling, arrengement, Segement order, Segment and UI Box sizing everything should follows in the same style
+
+Pages to be affected
+
+@helper_21_profile_tab_page.dart 
+@helper_22_profile_edit_page.dart 
+@helper_27_helpee_rating_page.dart 
+@helpee_10_profile_page.dart 
+@helpee_11_profile_edit_page.dart 
+@helpee_14_helper_profile_page.dart 
+
+
+##################################################################################
+Helpee POV > Helpee Profile 
+@helpee_10_profile_page.dart
+@helpee_11_profile_edit_page.dart 
+
+Profile image
+
+Rating | Number of Reviews | Number of Jobs
+
+Personal Info
+
+About me
+
+Email
+Phone Number
+Location
+Age
+
+Emergency Contact
+Name
+Phone
+
+##################################################################################
+Helper POV > Helper profile > Profile Tab.
+@helper_21_profile_tab_page.dart
+@helper_22_profile_edit_page.dart 
+
+Profile image
+
+Rating | Number of Reviews | Number of Jobs
+
+Personal Info
+
+About me
+
+Email
+Phone Number
+Location
+Age
+
+Emergency Contact
+Name
+Phone
+
+##################################################################################
+Helpee POV > Helper profile > Profile Tab.
+@helpee_14_helper_profile_page.dart 
+
+Profile image
+
+Rating | Number of Reviews | Number of Jobs
+
+Personal Info
+
+About me
+
+Email
+Phone Number
+Location
+Age
+
+Reviews
+3 Recent Reviws from Helpees should be fethced and displayed here.
+
+Emergency Contact
+Name
+Phone
+
+##################################################################################
+Helper POV > Helpee profile
+@helper_27_helpee_rating_page.dart 
+
+Profile image
+
+Rating | Number of Reviews | Number of Jobs
+
+Personal Info
+
+About me
+
+Email
+Phone Number
+Location
+Age
+
+Reviews
+3 Recent Reviws from Helpers should be fethced and displayed here.
+
+Emergency Contact
+Name
+Phone
+
+
+
+Make sure you Do not chnage the working functions - Just add the segements and parameteres i said to add and if and only the curretly parameters are not in my structure remove them.
+
+Make sure You complete all the chnages i requested.
