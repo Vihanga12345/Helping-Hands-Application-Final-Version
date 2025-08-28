@@ -1,0 +1,49 @@
+﻿# Flutter/Dart/Pub related
+**/build/
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+
+# Generated
+generated/
+
+# Android
+**/local.properties
+**/key.properties
+**/app/*.keystore
+**/app/*.jks
+
+# iOS
+**/Pods/
+**/Podfile.lock
+**/Runner.xcworkspace/
+**/DerivedData/
+
+# Xcode
+*.xcuserstate
+**/*.xcuserstate
+**/*.xcuserdata/
+
+# Misc
+.flutter-plugins
+.flutter-plugins-dependencies
+.melos_tool
+
