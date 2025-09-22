@@ -630,9 +630,8 @@ class _Helpee13JobRequestEditPageState
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
-                        color: isRequired
-                            ? AppColors.error
-                            : AppColors.lightGrey,
+                        color:
+                            isRequired ? AppColors.error : AppColors.lightGrey,
                       ),
                     ),
                     filled: true,
@@ -767,9 +766,8 @@ class _Helpee13JobRequestEditPageState
       }
 
       if (_selectedDate != null) {
-        updatedFields['scheduled_date'] = _selectedDate!
-            .toIso8601String()
-            .split('T')[0];
+        updatedFields['scheduled_date'] =
+            _selectedDate!.toIso8601String().split('T')[0];
       }
 
       if (_selectedTime != null) {
@@ -825,8 +823,7 @@ class _Helpee13JobRequestEditPageState
                 answerFields['answer_text'] = updatedAnswer.toString().trim();
                 break;
               case 'number':
-                final numberValue =
-                    int.tryParse(updatedAnswer.toString()) ??
+                final numberValue = int.tryParse(updatedAnswer.toString()) ??
                     double.tryParse(updatedAnswer.toString()) ??
                     0;
                 answerFields['answer_number'] = numberValue;
@@ -835,8 +832,8 @@ class _Helpee13JobRequestEditPageState
               case 'yes_no':
                 final boolValue =
                     updatedAnswer.toString().toLowerCase() == 'yes' ||
-                    updatedAnswer.toString().toLowerCase() == 'true' ||
-                    updatedAnswer.toString() == '1';
+                        updatedAnswer.toString().toLowerCase() == 'true' ||
+                        updatedAnswer.toString() == '1';
                 answerFields['answer_boolean'] = boolValue;
                 answerFields['answer_text'] = updatedAnswer.toString().trim();
                 break;
